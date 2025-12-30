@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Wallet } from "lucide-react";
 import friendsIllustration from "@/assets/friends-illustration.png";
 
 interface OverviewCardProps {
@@ -51,6 +52,7 @@ const OverviewCard = ({ onSettleUp }: OverviewCardProps) => {
               size="sm"
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl px-5"
             >
+              <Wallet className="w-4 h-4 mr-1.5" />
               Settle Up
             </Button>
           </div>
