@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { PlusCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import OverviewCard from "@/components/OverviewCard";
 import FloatingNotification from "@/components/FloatingNotification";
 import BottomNavigation from "@/components/BottomNavigation";
@@ -64,6 +66,22 @@ const Index = () => {
         <div className="mb-6">
           <OverviewCard onSettleUp={handleSettleUp} />
         </div>
+
+        {/* Add Expense Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mb-6"
+        >
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-2xl py-6 text-base"
+          >
+            <PlusCircle className="w-5 h-5 mr-2" />
+            Add Expense
+          </Button>
+        </motion.div>
 
         {/* Floating Notifications */}
         <div className="space-y-4">
