@@ -11,12 +11,6 @@ import { toast } from "@/hooks/use-toast";
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSettleUp = () => {
-    toast({
-      title: "Opening Settle Up",
-      description: "Redirecting to settlement screen...",
-    });
-  };
 
   const handleSendReminder = () => {
     toast({
@@ -64,7 +58,7 @@ const Index = () => {
 
         {/* Overview Card */}
         <div className="mb-6">
-          <OverviewCard onSettleUp={handleSettleUp} />
+          <OverviewCard />
         </div>
 
         {/* Add Expense Button */}
