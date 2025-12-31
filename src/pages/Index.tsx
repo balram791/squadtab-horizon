@@ -2,22 +2,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import OverviewCard from "@/components/OverviewCard";
-import FloatingNotification from "@/components/FloatingNotification";
+import HeroCarousel from "@/components/HeroCarousel";
+import SquadsList from "@/components/SquadsList";
 import BottomNavigation from "@/components/BottomNavigation";
 import AddExpenseModal from "@/components/AddExpenseModal";
-import { toast } from "@/hooks/use-toast";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-
-  const handleSendReminder = () => {
-    toast({
-      title: "Reminder Sent! 📤",
-      description: "Priya will receive a notification",
-    });
-  };
 
   return (
     <div className="min-h-screen pb-28 relative overflow-hidden">
@@ -35,17 +26,12 @@ const Index = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-8"
+          className="mb-6"
         >
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-extrabold text-foreground tracking-tight">
-                SquadTab
-              </h1>
-              <p className="text-sm text-muted-foreground mt-1">
-                Split smarter, together
-              </p>
-            </div>
+            <h1 className="text-3xl font-extrabold text-foreground tracking-tight">
+              Home
+            </h1>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -56,16 +42,21 @@ const Index = () => {
           </div>
         </motion.header>
 
-        {/* Overview Card */}
+        {/* Hero Carousel Card */}
         <div className="mb-6">
-          <OverviewCard />
+          <HeroCarousel />
+        </div>
+
+        {/* Squads List */}
+        <div className="mb-6">
+          <SquadsList />
         </div>
 
         {/* Add Expense Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="mb-6"
         >
           <Button
@@ -76,32 +67,6 @@ const Index = () => {
             Add Expense
           </Button>
         </motion.div>
-
-        {/* Floating Notifications */}
-        <div className="space-y-4">
-          <FloatingNotification
-            type="owe"
-            title="Priya still owes ₹404.20 from dinner"
-            subtitle="Last reminder: 2 days ago"
-            actionLabel="Send Reminder"
-            onAction={handleSendReminder}
-            delay={0.2}
-          />
-
-          <FloatingNotification
-            type="settled"
-            title="Manali Trip - Settled! All Clear! ✓"
-            subtitle="₹12,500 split between 5 friends"
-            delay={0.4}
-          />
-
-          <FloatingNotification
-            type="settled"
-            title="Manali Trek - Settled! All Clear 🌿"
-            subtitle="Adventure expenses cleared"
-            delay={0.6}
-          />
-        </div>
       </div>
 
       {/* Bottom Navigation */}
